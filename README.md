@@ -26,10 +26,12 @@ These substitution algorithms efficiently solve triangular systems without the n
 
 The Gauss-Seidel method iteratively improves an initial guess to the solution of a linear system by updating each component of the solution vector using the most recent information available. Here's the iterative process:
 
-1. **Initial Guess**: Start with an initial guess $x^{(0)}$ for the solution vector $x$.
-2. **Iteration**:
-  
-3. **Convergence**: Repeat the iteration until the solution converges within a specified tolerance or a maximum number of iterations is reached.
+1. Decompose the coefficient matrix $A$ into $D$, $L$, and $U$.
+2. Initialize the solution vector $x$ with an initial approximation $x^0$.
+3. Iterate until convergence or maximum iterations:
+    a. Calculate the next iteration using the formula $x^{k+1} = (D-L)^{-1} (U x^k + b)$.
+    b. Check for convergence using the error estimate $\frac{||x-y||{\infty}}{||y||_{\infty}}$
+4. Repeat steps 3 until convergence or maximum iterations are reached.
 
 The Gauss-Seidel method typically converges faster than the Jacobi method because it uses updated values of the solution vector as soon as they become available.
 
@@ -42,8 +44,7 @@ The Jacobi method is a simpler variant of the Gauss-Seidel method, where each co
 3. Initialize the solution vector $x$ with an initial approximation $x^0$.
 4. Iterate until convergence or maximum iterations:
    a. Calculate the next iteration using the formula $x^{k+1} = D^{-1}((L+U) x^k + b)$
-   b. Check for convergence using the error estimate
-$\frac{||y-x||_{\infty} } { ||y||_{\infty}  }$
+   b. Check for convergence using the error estimate $\frac{||x-y||{\infty}}{||y||_{\infty}}$
 Repeat the iteration until the solution converges within a specified tolerance or a maximum number of iterations is reached.
 
 The Jacobi method is simpler to implement and parallelize compared to the Gauss-Seidel method, but it typically converges slower, especially for systems with strong coupling between variables.
@@ -70,14 +71,5 @@ When dealing with sparse matrices, where most of the elements are zero, Gauss-Se
 ## Conclusion
 
 For solving linear systems represented by sparse matrices, Gauss-Seidel and Jacobi methods offer superior memory and computational efficiency compared to LU decomposition. These iterative methods exploit the sparsity of the matrix, making them ideal choices for large-scale numerical simulations and computations.
-
-
-
-1. Decompose the coefficient matrix \( A \) into \( D \), \( L \), and \( U \).
-2. Initialize the solution vector \( x \) with an initial approximation \( x^0 \).
-3. Iterate until convergence or maximum iterations:
-    a. Calculate the next iteration using the formula \( x^{k+1} = (D-L)^{-1} (U x^k + b) \).
-    b. Check for convergence using the error estimate \( \frac{\|y-x\|_{\infty}}{\|y\|_{\infty}} \).
-4. Repeat steps 3 until convergence or maximum iterations are reached.
 
 
