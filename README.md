@@ -9,7 +9,7 @@ Linear systems' resolution using Forward and Backward Substitution Algorithms, L
 - [Gauss-Seidel Method](#gauss-seidel-method)
 - [Jacobi Method](#jacobi-method)
 - [Computational Advantages: Gauss-Seidel and Jacobi Methods vs. LU Decomposition](#computational-advantages-gauss-seidel-and-jacobi-methods-vs-lu-decomposition)
-2. [Function Documentation](#function-documentation)
+2. [Function's Documentation](#functions-documentation)
 - [mybw](#mybw)
 - [myfw](#myfw)
 - [myfwsistemi](#myfwsistemi)
@@ -95,7 +95,7 @@ For solving linear systems represented by sparse matrices, Gauss-Seidel and Jaco
 
 # Code structure
 
-# Function Documentation
+# Functions' documentation
 
 ## mybw
 
