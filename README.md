@@ -72,4 +72,145 @@ When dealing with sparse matrices, where most of the elements are zero, Gauss-Se
 
 For solving linear systems represented by sparse matrices, Gauss-Seidel and Jacobi methods offer superior memory and computational efficiency compared to LU decomposition. These iterative methods exploit the sparsity of the matrix, making them ideal choices for large-scale numerical simulations and computations.
 
+# Code structure
 
+# Function Documentation
+
+## mybw
+
+### Purpose
+Solve systems with upper triangular associated matrix through the backward substitution algorithm.
+
+### Input
+- `U`: Matrix associated with the system. NOTE: `U` must be an upper triangular matrix.
+- `b`: Column vector of constant terms.
+
+### Output
+- `x`: Solution of the system `Ux=b`.
+
+## myfw
+
+### Purpose
+Solve systems with lower triangular associated matrix through the forward substitution algorithm.
+
+### Input
+- `L`: Matrix associated with the system. NOTE: `L` must be a lower triangular matrix.
+- `b`: Column vector of constant terms.
+
+### Output
+- `x`: Solution of the system `Lx=b`.
+
+## myfwsistemi
+
+### Purpose
+Solve systems with lower triangular associated matrix and unit diagonal through the forward substitution algorithm. The algorithm is designed for solving systems using LU factorization.
+
+### Input
+- `L`: Matrix associated with the system. NOTE: `L` must be a lower triangular matrix with unit diagonal.
+- `b`: Column vector of known terms.
+
+### Output
+- `x`: Solution of the system `Lx=b`.
+
+## mylu
+
+### Purpose
+LU factorization of matrix `A`: determine the matrix `L`, lower triangular, where the multiplicative factors of the Gaussian elimination algorithm are allocated iteratively, and the matrix `U`, upper triangular, matrix in which `A` is transformed after the Gaussian elimination algorithm.
+
+### Input
+- `A`: Matrix to be factorized. NOTE: the matrix must NOT have null pivots, otherwise the algorithm will terminate.
+
+### Output
+- `A`: Factorized matrix. To save memory, matrices `L` and `U` are allocated directly in the input matrix `A`.
+- `info`: Error indicator.
+
+## myplufatt
+
+### Purpose
+PLU factorization of matrix `A` with partial pivoting. Determine: `U` upper triangular matrix, result of the Gaussian elimination algorithm applied to `A`; `L` lower triangular matrix containing column by column the multiplicative factors of the Gaussian elimination algorithm; `P` permutation matrix responsible for pivoting.
+
+### Input
+- `A`: Matrix to be factorized.
+
+### Output
+- `A`: Factorized matrix.
+- `p`: Permutation vector: indicates the order in which the rows of the identity matrix should be considered to obtain `P`.
+- `info`: Indicates if the last pivot is null.
+
+## mygs
+
+### Purpose
+Solve the system of equations Ax=b using the Gauss-Seidel iterative method.
+
+### Input
+- `a`: Vector containing the non-zero elements of matrix A.
+- `r`: Vector containing the row indices of the non-zero elements of matrix A.
+- `c`: Vector containing the column indices of the non-zero elements of matrix A.
+- `b`: Column vector of constant terms.
+- `x0`: Initial approximation of the solution to the system Ax=b.
+- `Kmax`: Maximum number of iterations.
+- `tol`: Maximum tolerated error on the solution.
+
+### Output
+- `x`: Approximation of the solution to the system Ax=b.
+- `ierr`: Error indicator. If the algorithm finds a solution with an error less than the tolerance in fewer than `Kmax` iterations, `ierr=0`; otherwise, if the tolerance is not met or if the `Kmax` iterations are exceeded, `ierr=-1`.
+
+## myj
+
+### Purpose
+Solve the system of equations Ax=b using the Jacobi iterative method.
+
+### Input
+- `a`: Vector containing the non-zero elements of matrix A.
+- `r`: Vector containing the row indices of the non-zero elements of matrix A.
+- `c`: Vector containing the column indices of the non-zero elements of matrix A.
+- `b`: Column vector of constant terms.
+- `x0`: Initial approximation of the solution to the system Ax=b.
+- `Kmax`: Maximum number of iterations.
+- `tol`: Maximum tolerated error on the solution.
+
+### Output
+- `x`: Approximation of the solution to the system Ax=b.
+- `ierr`: Error indicator. If the algorithm finds a solution with an error less than the tolerance in fewer than `Kmax` iterations, `ierr=0`; otherwise, if the tolerance is not met or if the `Kmax` iterations are exceeded, `ierr=-1`.
+
+## mygserr
+
+### Purpose
+Solve the system of equations Ax=b using the Gauss-Seidel iterative method with error estimation.
+
+### Input
+- `a`: Vector containing the non-zero elements of matrix A.
+- `r`: Vector containing the row indices of the non-zero elements of matrix A.
+- `c`: Vector containing the column indices of the non-zero elements of matrix A.
+- `b`: Column vector of constant terms.
+- `x0`: Initial approximation of the solution to the system Ax=b.
+- `Kmax`: Maximum number of iterations.
+- `tol`: Maximum tolerated error on the solution.
+
+### Output
+- `x`: Approximation of the solution to the system Ax=b.
+- `ierr`: Error indicator. If the algorithm finds a solution with an error less than the tolerance in fewer than `Kmax` iterations, `ierr=0`; otherwise, if the tolerance is not met or if the `Kmax` iterations are exceeded, `ierr=-1`.
+- `errore`: Vector containing the error estimates iterated over each iteration.
+- `iter`: Vector containing the completed iterations.
+- `raggio`: Maximum absolute eigenvalue of the iterative matrix.
+
+## myjerr
+
+### Purpose
+Solve the system of equations Ax=b using the Jacobi iterative method with error estimation.
+
+### Input
+- `a`: Vector containing the non-zero elements of matrix A.
+- `r`: Vector containing the row indices of the non-zero elements of matrix A.
+- `c`: Vector containing the column indices of the non-zero elements of matrix A.
+- `b`: Column vector of constant terms.
+- `x0`: Initial approximation of the solution to the system Ax=b.
+- `Kmax`: Maximum number of iterations.
+- `tol`: Maximum tolerated error on the solution.
+
+### Output
+- `x`: Approximation of the solution to the system Ax=b.
+- `ierr`: Error indicator. If the algorithm finds a solution with an error less than the tolerance in fewer than `Kmax` iterations, `ierr=0`; otherwise, if the tolerance is not met or if the `Kmax` iterations are exceeded, `ierr=-1`.
+- `errore`: Vector containing the error estimates iterated over each iteration.
+- `iter`: Vector containing the completed iterations.
+- `raggio`: Maximum absolute eigenvalue of the iterative matrix.
