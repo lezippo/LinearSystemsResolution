@@ -1,6 +1,27 @@
 # LinearSystemsResolution
 Linear systems' resolution using Forward and Backward Substitution Algorithms, LU factorisation with and without partial pivoting, Gauss-Seidel and Jacobi Methods 
 
+1. [Theory](#theory)
+- [LU Factorization](#lu-factorization)
+   - [With Partial Pivoting](#with-partial-pivoting)
+   - [Without Partial Pivoting](#without-partial-pivoting)
+- [Forward and Backward Substitution](#forward-and-backward-substitution)
+- [Gauss-Seidel Method](#gauss-seidel-method)
+- [Jacobi Method](#jacobi-method)
+- [Computational Advantages: Gauss-Seidel and Jacobi Methods vs. LU Decomposition](#computational-advantages-gauss-seidel-and-jacobi-methods-vs-lu-decomposition)
+2. [Function Documentation](#function-documentation)
+- [mybw](#mybw)
+- [myfw](#myfw)
+- [myfwsistemi](#myfwsistemi)
+- [mylu](#mylu)
+- [myplufatt](#myplufatt)
+- [mygs](#mygs)
+- [myj](#myj)
+- [mygserr](#mygserr)
+- [myjerr](#myjerr)
+
+# Theory
+
 ## LU Factorization
 
 LU factorisation decomposes a square matrix $A$ into the product of a lower triangular matrix $L$ and an upper triangular matrix $U$: $A = LU$. This factorisation simplifies solving linear systems by reducing them to two triangular systems.
